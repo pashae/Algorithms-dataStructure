@@ -98,7 +98,7 @@ function mergeSortProcessArray(arr, leftBorder, midIndex, rightBorder) {
 
  */
 
-var test = SortHelper.generateArray(100000,1,2000);
-var result = mergeSort(test);
-SortHelper.printArray(result);
-SortHelper.testSortFunctionPerformance('归并排序', mergeSort, test);
+//var test = SortHelper.generateArray(100000,1,2000);
+//var result = mergeSort(test);
+//SortHelper.printArray(result);
+//SortHelper.testSortFunctionPerformance('归并排序', mergeSort, test);

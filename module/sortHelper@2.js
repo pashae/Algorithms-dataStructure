@@ -36,6 +36,32 @@ var SortHelper = function() {
 		};
 	};
 
+	/**
+	 * [generateArray description]
+	 * @param {Number} num 给定的元素个数
+	 * @param {Number} swapTimes 需要交换的次数
+	 * @output {Array} arr 近乎有序的数组
+	 */
+	this.generateNearlyOrderedArray = function(num, swapTimes) {
+		if (num == null || num === 0 || swapTimes == null || swapTimes === 0) {
+			console.log('Input parameter error！The number of array or the swapTimes can\'t be zero!');
+			return false;
+		};
+		var arr = new Array(num);
+		//生成一个有序数组
+		for (var i = 0; i < num; i++) {
+			arr[i] = i;
+		};
+		//随机交换数组中一定位置的元素
+		for (var i = 0; i < swapTimes; i++) {
+			var x = Math.floor(Math.random()*num);
+			var y = Math.floor(Math.random()*num);
+			this.swapNum(arr,arr[x], arr[y]);
+		};
+
+		return arr;
+	};
+
 	// 打印数组
 	/**
 	 * [printArray description]

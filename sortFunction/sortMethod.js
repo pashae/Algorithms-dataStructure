@@ -47,6 +47,27 @@ SortMethod.prototype = {
 		return arr;
 	},
 
+	//改进的冒泡排序
+	//思想：每次遍历过后，记录下需要交换的元素的位置，即只进行一次交换
+	bubbleSortBetter: function(arr) {
+		if (arr == null || arr.length === 0) {
+			console.log('Input parameter error！The array is null or nothing in it!');
+			return false;
+		};
+		var len = arr.length;
+		while(len > 0) {
+			var pos = 0;
+			for (var i = 0; i < len; i++) {
+				if (arr[i] > arr[i+1]) {
+					pos = i;
+					SortHelper.swapNum(arr, i, i+1);
+				};
+			};
+			len = pos;
+		};
+		return arr;
+	},
+
 	//插入排序
 	//思想：玩牌的时候垒牌的过程
 	//		新拿到一张牌，依次与手中的牌进行比较，之后放入合适的位置
