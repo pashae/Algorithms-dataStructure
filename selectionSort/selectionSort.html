@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序测试</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function selectionSort(arr) {
+			if (arr == null || arr.length === 0) {
+				return false;
+			};
+			//进行排序
+			for (var i = 0; i < arr.length; i++) {
+				//指定位置
+				var minIndex = i;
+				for (var j = i + 1; j < arr.length; j++) {
+					if (arr[j] < arr[minIndex]) {
+						minIndex = j;
+					};
+				};
+				var temp = arr[i];
+				arr[i] = arr[minIndex];
+				arr[minIndex] = temp;
+			};
+			return arr;
+		};
+
+		var test = [10,9,8,7,6,5,4,3,2,1];
+		var result = selectionSort(test);
+
+		console.log(result);
+	</script>	
+</body>
+</html>

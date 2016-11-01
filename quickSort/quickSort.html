@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快速排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function quickSort(arr) {
+			/*if (arr == null || arr.length === 0) {
+				console.log('Input parameter error！The array is null or nothing in it!');
+				return false;
+			};*/
+			if (arr.length === 1) {
+				return arr;
+			};
+			var leftArr = [];
+			var rightArr = [];
+			var pivot = arr[0];
+			for (var i = 1; i < arr.length; i++) {
+				if (arr[i] <= pivot) {
+					leftArr.push(arr[i]);
+				} else {
+					rightArr.push(arr[i]);
+				};
+			};
+
+			return quickSort(leftArr).concat([pivot], quickSort(rightArr));
+		};
+
+		var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+		console.log(quickSort(arr));
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>归并排序测试</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		function mergeSort(arr) {
+			console.log(arr.length);
+			if (arr == null || arr.length === 0) {
+				console.log('Input parameter error！The array is null or nothing in it!');
+				return false;
+			};
+			//进行排序
+			/*
+			@param:step表示每次分组的长度
+			 */
+			for(var step = 1; step <= arr.length; step += step) {
+				for(var i = 0; i+step < arr.length; i += step*2) {
+					//对arr[i...i+step-1]和arr[i+step...i+2*step-1]
+					mergeSortProcessArray(arr, i, i+step-1,Math.min(i+2*step-1,arr.length-1));
+				};
+			};
+			return arr;
+		};
+
+		function mergeSortProcessArray(arr, leftBorder, midIndex, rightBorder) {
+			var tempArr = [rightBorder-leftBorder+1];
+			for (var i = leftBorder; i <= rightBorder; i++) {
+				tempArr[i-leftBorder] = arr[i];
+			};
+			//i代表左半部分指针，j代表右半部分指针
+			var i = leftBorder, j = midIndex + 1;
+			for(var k = leftBorder; k <= rightBorder; k++) {
+				if(i > midIndex) {
+					arr[k] = tempArr[j-leftBorder];
+					j++;
+				} else if(j > rightBorder) {
+					arr[k] = tempArr[i-leftBorder];
+					i++;
+				} else if(tempArr[i-leftBorder] < tempArr[j-leftBorder]) {
+					arr[k] = tempArr[i-leftBorder];
+					i++;
+				} else {
+					arr[k] = tempArr[j-leftBorder];
+					j++;
+				};
+			};
+		};
+
+		var arr = [6,8,2,3,7,5,4,1];
+		var result = mergeSort(arr);
+		console.log(result);
+	</script>
+</body>
+</html>
